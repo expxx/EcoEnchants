@@ -29,6 +29,8 @@ jobs:
             ${{ runner.os }}-gradle-
 
       - run: ./gradlew build --full-stacktrace
+        env:
+          GITHUB_TOKEN: ${{ secrets.PAT }}
 
       - uses: actions/upload-artifact@v6
         with:

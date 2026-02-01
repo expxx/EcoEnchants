@@ -44,6 +44,16 @@ allprojects {
         maven("https://repo.codemc.org/repository/nms/")
         maven("https://repo.essentialsx.net/releases/")
 
+        maven("https://maven.pkg.github.com/expxx/eco") {
+            credentials(HttpHeaderCredentials::class) {
+                name = "Authorization"
+                value = "Bearer ${System.getenv("GITHUB_TOKEN")}"
+            }
+            authentication {
+                create<HttpHeaderAuthentication>("header")
+            }
+        }
+
         maven("https://jitpack.io") {
             content { includeGroupByRegex("com\\.github\\..*") }
         }
